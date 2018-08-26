@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+
+<config>
+  <modules>
+    <Payabbhi_Payments>
+        <version>1.0.0</version>
+    </Payabbhi_Payments>
+  </modules>
+
+  <global>
+    <models>
+      <payabbhi_payments>
+        <class>Payabbhi_Payments_Model</class>
+      </payabbhi_payments>
+    </models>
+    <helpers>
+      <payabbhi_payments>
+        <class>Payabbhi_Payments_Helper</class>
+      </payabbhi_payments>
+    </helpers>
+    <blocks>
+      <payabbhi_payments>
+        <class>Payabbhi_Payments_Block</class>
+      </payabbhi_payments>
+    </blocks>
+    <resources>
+      <payabbhi_payments_setup>
+          <setup>
+              <module>Payabbhi_Payments</module>
+              <class>Mage_Core_Model_Resource_Setup</class>
+          </setup>
+      </payabbhi_payments_setup>
+    </resources>
+  </global>
+
+  <frontend>
+    <layout>
+      <updates>
+          <payabbhi>
+              <file>payabbhi.xml</file>
+          </payabbhi>
+      </updates>
+    </layout>
+  <routers>
+    <payabbhi>
+       <use>standard</use>
+       <args>
+           <module>Payabbhi_Payments</module>
+           <frontName>payabbhi</frontName>
+       </args>
+    </payabbhi>
+   </routers>
+    <!-- <secure_url>
+      <payabbhi_checkout>/payabbhi/checkout</payabbhi_checkout>
+    </secure_url> -->
+  </frontend>
+
+  <default>
+   <payment>
+     <payabbhi>
+       <model>payabbhi_payments/paymentmethod</model>
+       <active>0</active>
+       <merchant_name_override>Magento</merchant_name_override>
+       <title>Payabbhi (Card / NetBanking / Wallet)</title>
+       <access_id></access_id>
+       <secret_key></secret_key>
+       <payment_auto_capture>1</payment_auto_capture>
+     </payabbhi>
+   </payment>
+  </default>
+</config>

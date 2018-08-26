@@ -1,0 +1,14 @@
+<layout version="1.0.0">
+    <payabbhi_checkout_index>
+        <reference name="head">
+            <block type="core/text" name="payabbhi.checkout" >
+                <action method="setText">
+                    <text>
+                       <![CDATA[<script type="text/javascript" src="https://checkout.payabbhi.com/v1/checkout.js"></script>]]>
+                    </text>
+                </action>
+            </block>
+            <action method="addJs"><file>payabbhi/payabbhi-utils.js</file></action>
+        </reference>
+    </payabbhi_checkout_index>
+</layout>

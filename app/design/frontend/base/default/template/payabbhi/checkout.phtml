@@ -1,0 +1,53 @@
+<form name="checkoutform" id="checkout-form" method="POST" action="<?php echo $this->getReturnUrl(); ?>">
+    <input id="payment_id" name="payment_id" type="hidden" />
+    <input id="order_id"   name="order_id"   type="hidden" />
+    <input id="payment_signature"  name="payment_signature"  type="hidden" />
+</form>
+<p id="msg-success" style="display:none">Please wait while we are processing your payment.</p>
+<p>
+    <button style="width: 60px;height: 30px;" id="btn-submit">Pay Now</button>
+    <button style="width: 60px;height: 30px;" id="btn-cancel">Cancel</button>
+</p>
+
+<script type="text/javascript">
+  (function(){
+      var setDisabled = function(id, state) {
+        if (typeof state === 'undefined') {
+          state = true;
+        }
+        var elem = document.getElementById(id);
+        if (state === false) {
+          elem.removeAttribute('disabled');
+        }
+        else {
+          elem.setAttribute('disabled', state);
+        }
+      };
+      var params = <?php echo json_encode($this->fields());?>;
+      var onSuccessHandler = function(payment){
+        setDisabled('btn-cancel');
+        var successMsg = document.getElementById('msg-success');
+        successMsg.style.display = "block";
+        document.getElementById('order_id').value = payment.order_id;
+        document.getElementById('payment_id').value = payment.payment_id;
+        document.getElementById('payment_signature').value = payment.payment_signature;
+        document.getElementById('checkout-form').submit();
+      };
+      var payabbhiUtils = new PayabbhiUtils(params);
+      function openCheckout() {
+        payabbhiUtils.placeOrder(onSuccessHandler);
+      }
+      function addEvent(element, evnt, funct){
+        if (element.attachEvent)
+         return element.attachEvent('on'+evnt, funct);
+        else
+         return element.addEventListener(evnt, funct, false);
+      }
+      // Attach event listener
+      addEvent(document.getElementById('btn-submit'), 'click', openCheckout);
+      addEvent(document.getElementById('btn-cancel'), 'click', function () {
+        document.getElementById('checkout-form').submit();
+      });
+      openCheckout();
+  })();
+</script>
