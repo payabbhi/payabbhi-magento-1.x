@@ -21,14 +21,14 @@ Clone/Download this repository and merge/copy the following folders in your Mage
 
 ### Configuration
 
-1. Navigate to `Magento Dashboard` -> `System` -> `Configuration` -> `Payment Methods`
+1. Navigate to `Magento Dashboard` > `System` > `Configuration` > `Payment Methods`
 2. Click on `Payabbhi (Card / NetBanking / UPI / Wallet)` to configure `Payabbhi`:
-  - [Access ID](https://payabbhi.com/docs/account/#api-keys)
-  - [Secret Key](https://payabbhi.com/docs/account/#api-keys)
-  - [payment_auto_capture](https://payabbhi.com/docs/api/#create-an-order)
-  - `Enabled` - Change to `Yes`
-  - `Title` - Payabbhi description displayed on Magento Checkout page.
-  - `Override Merchant Name` - Merchant name to be displayed on Payabbhi Checkout Form.
+  - [Access ID](https://payabbhi.com/docs/account/#api-keys) - Set value as per your Payabbhi Account
+  - [Secret Key](https://payabbhi.com/docs/account/#api-keys) - Set value as per your Payabbhi Account
+  - `Enabled` - Set to `Yes`
+  - `Title` - Payabbhi description displayed on Magento Checkout page - Set to `Pay via Payabbhi (Card / NetBanking / UPI / Wallet)`
+  - `Override Merchant Name` - Merchant name to be displayed on Payabbhi Checkout Form - (Optional setting)
+  - [payment_auto_capture](https://payabbhi.com/docs/api/#create-an-order) - Set to `enabled`
 
 
 ```Magento Cache may need to be cleared from the Admin panel (`System` -> `Cache Management`), in case `Payabbhi` does not appear as per #2 above.```
